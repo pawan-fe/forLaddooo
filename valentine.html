@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love Shraddha Ji ❤️</title>
+
+<style>
+body{
+margin:0;
+font-family:Georgia, serif;
+background:rgb(157,108,242);
+color:white;
+text-align:center;
+overflow-y:hidden;
+}
+
+/* screens */
+#quiz, #gate, #main { display:none; height:100vh; }
+
+/* center helper */
+.center{
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+/* buttons */
+button{
+padding:14px 26px;
+margin:10px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+}
+.yes{ background:#ff2e63; color:white; }
+.no{ background:white; color:#ff2e63; }
+
+/* gate doors */
+#gate{ display:flex; }
+.door{
+flex:1;
+background:black;
+transition:transform 2s ease;
+}
+.open-left{ transform:translateX(-100%); }
+.open-right{ transform:translateX(100%); }
+
+/* main page */
+.mainBody{
+background:linear-gradient(135deg,#A62B24,#e44940);
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+max-width:700px;
+background:rgba(255,255,255,0.15);
+padding:30px;
+border-radius:20px;
+}
+
+/* slideshow */
+.slideshow{
+width:100%;
+height:300px;
+margin:15px 0;
+position:relative;
+}
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+display:none;
+border-radius:12px;
+}
+
+/* sunflower */
+.sunflower{ font-size:28px; }
+
+/* hearts */
+.heart{
+position:fixed;
+top:-20px;
+font-size:20px;
+animation:fall 5s linear forwards;
+}
+@keyframes fall{
+to{ transform:translateY(110vh); opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- QUIZ -->
+<div id="quiz" class="center">
+<h1>Laddooo, Do you love me? ❤️</h1>
+<p style="margin:0;">Chup chap se yes karo pillu..!</p>
+
+<img src="https://vt.shizuka.my.id/media/VM1fcpu2bKs1e2Kdbj/200w.gif" width="200">
+
+<div style="margin-top:20px;">
+<button class="yes" onclick="startGate(true)">Yes 💖</button>
+<button class="no" onclick="startGate(false)">No 😢</button>
+</div>
+</div>
+
+<!-- GATE -->
+<div id="gate">
+<div class="door" id="leftDoor"></div>
+<div class="door" id="rightDoor"></div>
+</div>
+
+<!-- MAIN -->
+<div id="main" class="mainBody">
+<div class="container">
+
+<h1>Shraddha Ji ❤️</h1>
+
+<!-- IMAGE SLIDER -->
+<div class="slideshow">
+<img src="1.jpeg" class="slide">
+<img src="2.jpeg" class="slide">
+<img src="3.jpeg" class="slide">
+<img src="4.jpeg" class="slide">
+</div>
+
+<p>
+From the moment you entered my life, everything became more beautiful.
+Your smile is my peace, your voice is my comfort, and your happiness is my biggest priority.
+</p>
+
+<p>
+I may not be perfect, but my love for you is honest, pure, and forever.
+Every heartbeat of mine whispers only <b>Shraddha Ji 💖</b>.
+</p>
+
+<p>
+I will walk with you in every season of life…
+hold your hand in happiness and protect your smile in difficult times.
+Not just today, but for all the tomorrows waiting for us.
+</p>
+
+<h2>I love you so so so much my Valentine 🤗💖</h2>
+<p><b>Your Pawan Ji ❤️🫂</b></p>
+
+<div class="sunflower">🌻🌻</div>
+
+</div>
+</div>
+
+<script>
+/* show quiz first */
+document.getElementById("quiz").style.display="flex";
+
+/* gate animation */
+function startGate(love){
+document.getElementById("quiz").style.display="none";
+document.getElementById("gate").style.display="flex";
+
+if(!love){
+setTimeout(()=>alert("Chup na kuch nhi hota sab haa hota hai 😌❤️"),300);
+}
+if(love){
+setTimeout(()=>alert("Agar naa bolte to khair nhi thi aapki laddoo 😂"),300);
+}
+
+setTimeout(()=>{
+leftDoor.classList.add("open-left");
+rightDoor.classList.add("open-right");
+},200);
+
+setTimeout(()=>{
+document.getElementById("gate").style.display="none";
+document.getElementById("main").style.display="flex";
+startHearts();
+startSlideshow();   // ✅ correct function name
+},2200);
+}
+
+/* floating hearts */
+function startHearts(){
+setInterval(()=>{
+let h=document.createElement("div");
+h.innerHTML="❤️";
+h.className="heart";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),5000);
+},300);
+}
+
+/* slideshow working */
+function startSlideshow(){
+let i=0;
+const slides=document.querySelectorAll(".slide");
+if(!slides.length) return;
+
+slides[0].style.display="block"; // show first image
+
+setInterval(()=>{
+slides[i].style.display="none";
+i=(i+1)%slides.length;
+slides[i].style.display="block";
+},2000);
+}
+</script>
+
+</body>
+</html>
